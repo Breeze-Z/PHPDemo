@@ -5,27 +5,27 @@
         <style type="text/css">
             
         </style> 
-        <script type="text/javascript" src="js/js.js"></script>
+        <script type="text/javascript" src="js/check.js"></script>
     </head>
-    <body>
+    <body><!--autocomplete="off" 刷新清空文本框-->
         <form action="reg.php" method="post">
             <ul>
                 <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：
-                    <input id="username" name="username" type="text" class="reg"/>
+                    <input id="username" name="username" type="text" value="" />
                     (必填，3-15字符长度，支持汉字、字母、数字及_)
                 </li>
                 <li>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：
-                    <input id="password" name="password" type="password" class="reg"/>
+                    <input id="password" name="password" type="password" />
                     (必填，不得少于6位)
                 </li>
                 <li>重复密码：
-                    <input id="regpass" name="regpass" type="password" class="input"/></li>
+                    <input id="regpass" name="regpass" type="password" /></li>
                 <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
-                    <input id="email" name="email" type="text" class="input"/>
+                    <input id="email" name="email" type="text" value=""/>
                     (必填)
                 </li>
-                <li><input type="submit" name="submit" value="注册"/>&nbsp;&nbsp;
-                    <input type="button" name="reset" value="重置"/>
+                <li><input type="submit" id="submit" name="submit" value="注册"/>&nbsp;&nbsp;
+                    <input type="reset" name="reset" value="重置"/>
                 </li>
             </ul>            
         </form>

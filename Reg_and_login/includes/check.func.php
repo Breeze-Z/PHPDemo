@@ -17,7 +17,7 @@ function check_password($password){
 }
 function check_regpass($password,$regpass){
     if(!($password==$regpass)){
-        exit("您输入的密码不一致，请重新输入<a href='javascript:history.back(-1)'>返回</a>$password==$regpass");
+        exit("您输入的密码不一致，请重新输入<a href='javascript:history.back(-1)'>返回</a>");
     }
 }
 function check_email($email){

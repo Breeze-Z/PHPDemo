@@ -1,9 +1,9 @@
 <?php
 header("Content-Type:text/html;charset=utf-8");
 define('IN_TG', true);
-//if(!isset($_POST['submit'])){
-//    exit('无权限访问此页面');
-//}
+if(!isset($_POST['submit'])){
+    exit('无权限访问此页面');
+}
 require '/includes/mysql.func.php';
 require '/includes/check.func.php';
 /*字符正则表达式匹配
@@ -24,10 +24,6 @@ $username = check_username($_POST['username']);
 $password = check_password($_POST['password']);
 $regpass = check_regpass($_POST['password'],$_POST['regpass']);
 $email = check_email($_POST['email']);
-//$username = check_username('张伟森');
-//$password = check_password(123456);
-//$regpass = check_regpass(123456,123456);
-//$email = check_email('123@qq.com');
 
 //匹配用户名是否重复
 DB::contect();
