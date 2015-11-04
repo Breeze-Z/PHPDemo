@@ -21,13 +21,11 @@ $result=mysql_query($sql);
 if( $res = mysql_fetch_array($result)){
     $_SESSION['username']=$username;
     $_SESSION['UID']=$res['uid'];
-        echo $username,' 欢迎你！进入 <a href="my.php">用户中心</a><br />';
+        //待改进，3秒后自动跳转主页(js)
+        echo $username,' 欢迎你！进入 <a href="home.php">用户中心</a><br />';
+        echo "三秒后跳转...\n<meta http-equiv='refresh' content='3; url=http:home.php'>";
 	echo '点击此处 <a href="login.php?action=logout">注销</a> 登录！<br />';
-	exit;
+	exit;//数据库类Db在销毁对象实例的时候会自动关闭数据库连接的
 }else{
     exit('登录失败！点击此处 <a href="javascript:history.back(-1);">返回</a> 重试');
 }
-DB::close();
-
-
-
