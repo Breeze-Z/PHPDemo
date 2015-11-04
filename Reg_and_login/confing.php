@@ -1,7 +1,7 @@
 <?php
 define('HOST','localhost');
-define('SQLU','root');
-define('SQLP','');
+define('SQLUER','root');
+define('SQLPW','');
 define('SQLDB','test');
 define('TABLE','user');
 
