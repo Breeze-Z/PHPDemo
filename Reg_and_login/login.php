@@ -2,7 +2,7 @@
 session_start();//记得检测是否退出消除session
 header("Content-Type:text/html;charset=utf-8");
 if($_GET['action'] == "logout"){
-    unset($_SESSION['userid']);
+    unset($_SESSION['UID']);
     unset($_SESSION['username']);
     echo '注销登录成功！点击此处 <a href="login.html">登录</a>';
     exit;
