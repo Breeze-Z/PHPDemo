@@ -10,7 +10,7 @@
     session_start();
     header("Content-Type:text/html;charset=utf-8");
     //判断session 是否退出
-    if($_GET['action']=='logout'){
+    if(@$_GET['action']=='logout'){
         unset($_SESSION['username']);
         unset($_SESSION['UID']);
         exit('注销登录成功！点击此处 <a href="login.html">登录</a>');
@@ -24,7 +24,7 @@
     require './includes/mysql.func.php';
     DB::contect();
     $lists = 5;
-    $page = $_GET['p'] ? $_GET['p'] : 1;
+    @$page = $_GET['p'] ? $_GET['p'] : 1;
     $limit = ($page-1) * $lists;
     $sql = "SELECT * FROM guestbook ORDER BY id DESC LIMIT $limit,$lists";
     $result = mysql_query($sql);
@@ -67,7 +67,7 @@
             </li>
             <li>　　
                 <input type="submit" name="submit" value="提交" />
-                <input type="button" name="back" value="退出" />
+                <input type="button" id="back" name="back" value="退出" />
             </li> 
             <li>——当前用户：<?php echo $_SESSION['username']?></li> 
         </ul>
