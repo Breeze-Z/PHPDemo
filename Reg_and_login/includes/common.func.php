@@ -30,13 +30,13 @@ function paging($lists,$url){
     }
     $num = mysql_fetch_array($res);
     $page = ceil($num['count']/$lists);
-    echo "共有{$num['count']}条留言　　";
+    echo "共有{$num['count']}条留言:";
     if($page>1){
         for($i=1;$i<=$page;$i++){
             if($i == $p){
-                echo "[$i]";
+                echo " [$i] ";
             }else{
-                echo '<a href="',$url,'?p=',$i,'">',$i,'</a>';                
+                echo '<a href="',$url,'?p=',$i,'"> ',$i,' </a>';                
             }
         }
     }else{
