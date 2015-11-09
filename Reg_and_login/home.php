@@ -6,9 +6,10 @@
 <body>
 <?php
     define('IN_TG',true);
-    //内容显示，分页模块
     session_start();
     header("Content-Type:text/html;charset=utf-8");
+    require './includes/mysql.func.php';
+    require './includes/common.func.php';
     //判断session 是否退出
     if(@$_GET['action']=='logout'){
         unset($_SESSION['username']);
@@ -21,43 +22,18 @@
         exit('未登录!<br>三秒后自动跳到登录页面......') ;  
     } 
     $username = $_SESSION['username'];
-    require './includes/mysql.func.php';
     DB::contect();
     $lists = 5;
-    @$page = $_GET['p'] ? $_GET['p'] : 1;
-    $limit = ($page-1) * $lists;
-    $sql = "SELECT * FROM guestbook ORDER BY id DESC LIMIT $limit,$lists";
-    $result = mysql_query($sql);
-    if($result){
-        while($content = mysql_fetch_array($result)){
+    if($resu = list_num($lists)){
+        while($content = mysql_fetch_array($resu)){
             echo "用户名：{$content['nickname']}<br/>";
             echo "内容：{$content['content']}<br/>";
             echo "时间：".date('Y-m-d H:i',$content['createtime']);
             echo "<hr/>";
-        }
-    }else{
-        exit('数据查询失败 '.mysql_error());
-    }
-    $sqlsum="SELECT COUNT(*) as count FROM guestbook";
-    $res = mysql_query($sqlsum);
-    if($res){
-    $sum = mysql_fetch_array($res);
-    $pages = ceil($sum['count']/$lists);
-    echo "共有{$sum['count']}条留言　　";
-    if($pages>1){
-        for($i=1;$i<=$pages;$i++){
-            if($i==$page){
-                echo "[$i]";
-            }else{
-                echo '<a href="home.php?p=',$i,'">',$i,'</a>';
-            }
-        }
-        }else{
-            exit('数据查询失败 '.mysql_error());
-        }
-    }
-    
-
+       }
+    };
+    paging($lists, 'home.php');
+    DB::close();
 ?>
     <!--内同提交模块-->
     <form action="push.php" method="post">

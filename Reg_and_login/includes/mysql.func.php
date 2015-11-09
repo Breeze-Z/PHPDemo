@@ -3,7 +3,7 @@
 if( !defined('IN_TG')){
      exit('非授权无法调用此页面!');
  }
-require './confing.php';
+ require './confing.php';
 class DB{
     static $_connect = null;
     static function contect(){
