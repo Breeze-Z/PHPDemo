@@ -31,7 +31,7 @@
             echo "时间：".date('Y-m-d H:i',$content['createtime']);
             echo "<hr/>";
        }
-    };
+    }
     paging($lists, 'home.php');
     DB::close();
 ?>
